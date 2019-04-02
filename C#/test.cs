@@ -1,3 +1,4 @@
+//条件是必须为 virtual 方法才可被伪装。
 [TestMethod]
 public void TestAPIClientAuthorize()
 {
