@@ -1,24 +1,30 @@
 
-protected virtual async Task<string> SendHttpPostRequestAsync(Uri url, byte[] datas = null)
+        public string PostResponse(string url,string postData,out string statusCode)
         {
-            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
-            request.Method = WebRequestMethods.Http.Post;
-            request.Headers = BuildHttpRequestAuthorizeHeader();
-            request.ContentType = "application/json;charset=utf-8";//确保此处设置了适当的Content-type和Media-Type，否则引发Http 415 Error - Unsupport Media Type
-            request.MediaType = "application/json;charset=utf-8";
-
-            if (datas != null && datas.Length > 0)
+            string result = string.Empty;
+            //设置Http的正文
+            HttpContent httpContent = new StringContent(postData);
+            //设置Http的内容标头
+            httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            //设置Http的内容标头的字符
+            httpContent.Headers.ContentType.CharSet = "utf-8";
+            using(HttpClient httpClient=new HttpClient())
             {
-                Stream requestStream = await request.GetRequestStreamAsync();
-                await requestStream.WriteAsync(datas, 0, datas.Length);
+                //异步Post
+                HttpResponseMessage response = httpClient.PostAsync(url, httpContent).Result;
+                //输出Http响应状态码
+                statusCode = response.StatusCode.ToString();
+                //确保Http响应成功
+                if (response.IsSuccessStatusCode)
+                {
+                    //异步读取json
+                    result = response.Content.ReadAsStringAsync().Result;
+                }
             }
+            return result;
 
-            HttpWebResponse response = await request.GetResponseAsync() as HttpWebResponse;
-            if (response.StatusCode != HttpStatusCode.OK)
-            {
-                throw new HttpRequestException("SDXI: POST 请求失败，未能获得 StatusCode=200 的响应。");
-            }
-
-            Stream responseStream = response.GetResponseStream();
-            return ReadResponseStreamUTF8(responseStream);
-        }
+--------------------- 
+作者：智障侠 
+来源：CSDN 
+原文：https://blog.csdn.net/sun_zeliang/article/details/81587835 
+版权声明：本文为博主原创文章，转载请附上博文链接！
