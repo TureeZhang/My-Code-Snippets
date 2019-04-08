@@ -1,0 +1,37 @@
+<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Xml" #>
+<#@ output extension=".cs" #>
+using System.Configuration;
+
+public static class WebConfigT4
+{
+// by Turee.Zhang:
+// ///////////////////////////////////////////////////////////////////////////////////
+// /////////警告：实体由T4引擎在鼠标焦点离开本文档或保存时自动生成，手动修改无效。/////////
+// ///////////////////////////////////////////////////////////////////////////////////
+// T4模板引擎并非由当前项目运行，真正的宿主位置在：<#= System.IO.Directory.GetCurrentDirectory() #>
+// 如何读取Web.Config文件的绝对地址：<#= Path.Combine(new DirectoryInfo(Host.TemplateFile).Parent.FullName,"web.config") #>
+// ///////////////////////////////////////////////////////////////////////////////////
+
+<#
+	string webconfigAbsolutePath = Path.Combine(new DirectoryInfo(Host.TemplateFile).Parent.FullName,"web.config");
+    XmlDocument xmlDocument = new XmlDocument();
+    xmlDocument.Load(webconfigAbsolutePath);
+    XmlNodeList xmlNodeList = xmlDocument.SelectNodes("/configuration/appSettings/add");
+    foreach (XmlNode item in xmlNodeList)
+    {
+        string key = item.Attributes["key"].Value;
+    #>
+        public static string <#=key.Replace(":","_")#> { get; set; }= ConfigurationManager.AppSettings["<#=key#>"];
+    <#
+    }
+#>
+
+}
