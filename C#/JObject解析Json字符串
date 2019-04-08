@@ -1,0 +1,2 @@
+//在只做简单解析时免于创建模型
+JsonConvert.DeserializeObject<JObject>(response).Value<string>("Data");
