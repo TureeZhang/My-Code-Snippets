@@ -37,3 +37,13 @@ namespace UnitTestProject
         }
     }
 }
+//测试应用程序必备组件
+//测试项目必须：
+//引用以下包：
+//Microsoft.AspNetCore.App
+//Microsoft.AspNetCore.Mvc.Testing
+//在项目文件中指定 Web SDK (<Project Sdk="Microsoft.NET.Sdk.Web">)。 Web SDK 时是必需的引用Microsoft.AspNetCore.App 元包。
+//这些系统必备组件中所示示例应用。 检查tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj文件。 示例应用使用xUnit测试框架和AngleSharp分析器库，因此示例应用还引用：
+//xunit
+//xunit.runner.visualstudio
+//AngleSharp
