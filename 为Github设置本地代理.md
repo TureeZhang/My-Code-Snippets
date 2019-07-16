@@ -10,8 +10,8 @@ git config --global --unset http.proxy
 git config --global --unset http.https://github.com.proxy
 ```
 
-> 
-作者：Neo陈
-链接：https://www.jianshu.com/p/22cd1653f666
-来源：简书
-简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+> 转载
+- 作者：Neo陈
+- 链接：https://www.jianshu.com/p/22cd1653f666
+- 来源：简书
+- 简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
