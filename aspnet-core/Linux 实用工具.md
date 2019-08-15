@@ -1,0 +1,4 @@
+- vi
+- nano
+- htop 性能检测工具
+- vsftp
