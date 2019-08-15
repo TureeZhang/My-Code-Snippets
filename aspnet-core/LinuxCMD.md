@@ -32,4 +32,4 @@ cd
 - fg 将后台中的命令调至前台继续运行
 - bg 将一个在后台暂停的命令，变成继续执行
 
-- nohup 命令行 > log.out 2>&1 & 忽视挂断信号，账号注销后仍继续运行命令
+- [nohup](https://www.cnblogs.com/jinxiao-pu/p/9131057.html) 命令行 > log.out 2>&1 & 忽视挂断信号，账号注销后仍继续运行命令
