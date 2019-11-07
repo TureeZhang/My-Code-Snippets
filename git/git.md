@@ -1,4 +1,4 @@
-**代码质量检测网站**
+**代码质量实时监测网站**
 
 <https://sonarcloud.io/about>
 
