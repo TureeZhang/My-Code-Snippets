@@ -2,3 +2,5 @@
 - nano
 - htop 性能检测工具
 - vsftp
+- w3m 文字浏览器
+- docker
