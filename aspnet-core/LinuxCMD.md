@@ -33,3 +33,7 @@ cd
 - bg 将一个在后台暂停的命令，变成继续执行
 
 - [nohup](https://www.cnblogs.com/jinxiao-pu/p/9131057.html) 命令行 > log.out 2>&1 & 忽视挂断信号，账号注销后仍继续运行命令
+
+**其他**
+
+- su 一次性在当前会话中获取 root 权限，不再 sudo 即可执行高风险命令。
