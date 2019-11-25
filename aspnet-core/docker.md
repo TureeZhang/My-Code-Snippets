@@ -20,4 +20,4 @@
 `` docker rmi `docker images -q` ``
 
 - 进入容器交互
-``docker exec -it containerID /bin/bash   containerID是镜像ID``
+``docker exec -it containerID /bin/bash``  containerID是镜像ID
