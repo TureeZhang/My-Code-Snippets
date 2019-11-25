@@ -18,3 +18,6 @@
 
 - 删除所有镜像 
 `` docker rmi `docker images -q` ``
+
+- 进入容器交互
+``docker exec -it containerID /bin/bash   containerID是镜像ID``
