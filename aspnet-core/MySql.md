@@ -1,3 +1,11 @@
+- 安装
+
+``apt-get install mysql-server``
+
+- 启动
+
+``/etc/init.d/mysql start``
+
 - 配置文件
 
 为 ``/etc/mysql/mysql.conf.d/mysqld.cnf``
