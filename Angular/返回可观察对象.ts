@@ -21,3 +21,8 @@
 
     return result;
   }
+
+
+//视图上可以使用 |async 管道处理可观察对象
+
+<button *ngIf="pageStatus==0 && (isAdmin|async)" nz-button nzType="primary" (click)="edit()" style="margin-left:16px;"><i nz-icon type="edit"></i>编 辑</button>
