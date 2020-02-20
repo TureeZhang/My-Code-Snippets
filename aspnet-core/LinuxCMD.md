@@ -39,3 +39,4 @@ cd
 - su 一次性在当前会话中获取 root 权限，不再 sudo 即可执行高风险命令。
 - copy -r cslcn/. cslcn.bak 拷贝 cslcn 下的所有文件到 cslcn.bak ，同时不包含 cslcn 文件夹本夹
 - find /(查找范围) -name callback.txt -print
+- top 查看计算机性能统计
