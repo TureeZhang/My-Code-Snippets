@@ -1,0 +1,14 @@
+```html
+
+<ng-container *ngTemplateOutlet="tplName">
+</ng-container>
+
+<ng-container *ngTemplateOutlet="tplName">
+</ng-container>
+
+<div #tplName>
+  <h1>可以被复制成两份模板</h1>
+</div>
+
+
+```
