@@ -1,0 +1,20 @@
+```html
+<nz-form-item>
+  <nz-form-label nzRequired>{{item.text}}</nz-form-label>
+  <nz-form-control nzErrorTip="请填写 {{item.text}}!">
+    <textarea formControlName="{{item.fieldName}}"
+              nz-input rows="2"
+              placeholder="{{item.description}}"
+              [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+              [(ngModel)]="homepageSettings[item.ngModel]"></textarea>
+  </nz-form-control>
+</nz-form-item>
+```
+
+```ts
+this.boardContents = [
+  new HomepageBoardContentDto("B 版块内容", "boardContentB", "B 版块显示的文本内容", "boardContentB"),
+  new HomepageBoardContentDto("C 版块内容", "boardContentC", "C 版块显示的文本内容", "boardContentC"),
+  new HomepageBoardContentDto("D 版块内容", "boardContentD", "D 版块显示的文本内容", "boardContentD")
+];
+```
