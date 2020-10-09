@@ -13,3 +13,5 @@ B.
 <div *ngIf="isLoading else loading"></div>
 <ng-template loading></ng-template>
 ```
+
+see also: https://blog.angular-university.io/angular-reactive-templates/
