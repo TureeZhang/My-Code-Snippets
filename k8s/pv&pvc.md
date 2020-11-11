@@ -45,5 +45,5 @@ deployment:
         - image: 'image:1.0.0'
           volumeMounts:
             - mountPath: /myserver/projects/bla
-              name: api-server-pvc
+              name: my-server-pvc
 ```
