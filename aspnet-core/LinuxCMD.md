@@ -40,3 +40,4 @@ cd
 - find /(查找范围) -name callback.txt -print
 - top 查看计算机性能统计
 - sed -i 's@Nuget.Project.Template.1.0.0.nupkg@'"Nuget.Project.Template.$CI_COMMIT_TAG.nupkg"'@g' $CI_PROJECT_DIR/my-scripts/Dockerfile 替换文本字符串并在其中使用环境变量
+- mount -t nfs 10.0.1.24:/k8sprd <本地目录> 挂载 NFS 
