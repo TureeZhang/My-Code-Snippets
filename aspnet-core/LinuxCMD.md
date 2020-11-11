@@ -31,7 +31,6 @@ cd
 - jobs 查看当前有多少在后台运行的命令
 - fg 将后台中的命令调至前台继续运行
 - bg 将一个在后台暂停的命令，变成继续执行
-
 - [nohup](https://www.cnblogs.com/jinxiao-pu/p/9131057.html) 命令行 > log.out 2>&1 & 忽视挂断信号，账号注销后仍继续运行命令
 
 **其他**
@@ -40,3 +39,4 @@ cd
 - copy -r cslcn/. cslcn.bak 拷贝 cslcn 下的所有文件到 cslcn.bak ，同时不包含 cslcn 文件夹本夹
 - find /(查找范围) -name callback.txt -print
 - top 查看计算机性能统计
+- sed -i 's@Nuget.Project.Template.1.0.0.nupkg@'"Nuget.Project.Template.$CI_COMMIT_TAG.nupkg"'@g' $CI_PROJECT_DIR/my-scripts/Dockerfile 替换文本字符串并在其中使用环境变量
