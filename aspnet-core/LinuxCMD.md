@@ -11,6 +11,9 @@ rm
 
 ``
 unzip [package-name]
+``
+
+``
 tar -xvf archive.tar.gz
 ``
 
