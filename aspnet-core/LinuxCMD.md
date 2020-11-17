@@ -11,6 +11,7 @@ rm
 
 ``
 unzip [package-name]
+tar -xvf archive.tar.gz
 ``
 
 **切换工作目录**
