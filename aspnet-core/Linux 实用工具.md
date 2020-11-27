@@ -4,3 +4,5 @@
 - vsftp
 - w3m 文字浏览器
 - docker
+- iftop
+- unzip
