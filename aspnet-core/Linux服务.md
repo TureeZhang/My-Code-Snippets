@@ -1,4 +1,6 @@
-```json
+存放在 /etc/systemd/system 下。
+
+```yaml
 [Unit]
 Description=Cities:Skylines China Wikipedia .NET Web API App running on Ubuntu
 
@@ -10,7 +12,7 @@ Restart=always
 RestartSec=10
 Restart=always
 KillSignal=SIGINT
-# 每运行 12 小时重启 1 次
+# 每运行 12 小时重启 1 次。仅 systemd 229 以上支持，systemctl --version 查看版本
 RuntimeMaxSec=43200
 SyslogIdentifier=dotnet-cslcn-webapi-app
 User=root
