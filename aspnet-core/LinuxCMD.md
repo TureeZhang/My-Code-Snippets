@@ -49,3 +49,8 @@ cd
 **性能**
 
 - pidstat -d 1 查看磁盘读写情况
+
+**网络**
+
+- lsof -i -P -n | grep LISTEN 查看端口占用
+- iftop 查看网络请求 IP 状况
