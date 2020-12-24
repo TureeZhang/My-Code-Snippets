@@ -25,9 +25,9 @@
   
   onSubmit(): void {
 
-      for (const i in this.beflamApiProjectForm.controls) {
-        this.beflamApiProjectForm.controls[i].markAsDirty();
-        this.beflamApiProjectForm.controls[i].updateValueAndValidity();
+      for (const i in this.apiProjectForm.controls) {
+        this.apiProjectForm.controls[i].markAsDirty();
+        this.apiProjectForm.controls[i].updateValueAndValidity();
       }
 
       this.isFormSubmiting = true;
