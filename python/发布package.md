@@ -62,4 +62,6 @@ python -m pip install --extra-index-url https://repo.xxx.com/repository/pypi-gro
 
 ## Nexus 配置匿名访问
 
-annoymouse 匿名用户需要配置角色，角色需要给 nexus-pypi-\*-read 等权限，按照实际情况设置。
+默认拉取需要用户名和密码，但 Nexus 支持设置匿名账户。
+
+注意 annoymouse 匿名用户需要配置角色，角色需要给 nexus-pypi-\*-read 等权限，按照实际情况设置。
