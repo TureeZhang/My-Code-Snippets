@@ -48,3 +48,6 @@ python -m pip install --user --upgrade setuptools wheel
 
 ## 上传
 
+```shell
+python -m twine upload --repository-url https://repo.xxxx.com/repository/pypi-host/ dist/*
+```
