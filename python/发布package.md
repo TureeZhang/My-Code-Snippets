@@ -64,10 +64,16 @@ python -m pip install --extra-index-url https://repo.xxx.com/repository/pypi-gro
 
 创建 MANIFEST.in 文件，包含如下内容 <https://stackoverflow.com/questions/38394362/distribute-pip-package-no-source-code>
 
+官方文档 https://packaging.python.org/guides/using-manifest-in/
+
 ```
 global-include *.py[co]
 global-exclude *.py
 ```
+
+此模板文件决定创建包时，如何包含或排除内容。包含 pvc 而排除 pv 即可。
+
+有时，此文件会受编码格式影响，例如使用 UTF8 无法识别而使用 GB2312 可以，需要留意 python setup.py sdist bdist_wheel 命令输出的内容中是否包含警告，以及观察输出中的 copy 文件信息是否包含目标文件。否则打包之后的包，在安装时无法正确输出文件，错误的 python 包仅为 2KB 大小，通常一定是比这个体积大一些的。
 
 ## Nexus 配置匿名访问
 
