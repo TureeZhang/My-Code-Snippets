@@ -25,7 +25,7 @@ F:.
 输出文件在 dist
 
 ```shell
-python -m pip install --user --upgrade setuptools wheel
+python setup.py sdist bdist_wheel
 ```
 
 最终文件结构
@@ -58,6 +58,15 @@ python -m twine upload --repository-url https://repo.xxxx.com/repository/pypi-ho
 
 ```shell
 python -m pip install --extra-index-url https://repo.xxx.com/repository/pypi-group/simple myapi==0.0.1
+```
+
+## 如果仅分发 pyc 而不是源码 pv
+
+创建 MANIFEST.in 文件，包含如下内容 <https://stackoverflow.com/questions/38394362/distribute-pip-package-no-source-code>
+
+```
+global-include *.py[co]
+global-exclude *.py
 ```
 
 ## Nexus 配置匿名访问
