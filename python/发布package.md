@@ -51,3 +51,15 @@ python -m pip install --user --upgrade setuptools wheel
 ```shell
 python -m twine upload --repository-url https://repo.xxxx.com/repository/pypi-host/ dist/*
 ```
+
+## 下载安装
+
+注意，是 https 不是 http，并且 url 结尾 simple 不能少
+
+```shell
+python -m pip install --extra-index-url https://repo.xxx.com/repository/pypi-group/simple myapi==0.0.1
+```
+
+## Nexus 配置匿名访问
+
+annoymouse 匿名用户需要配置角色，角色需要给 nexus-pypi-\*-read 等权限，按照实际情况设置。
