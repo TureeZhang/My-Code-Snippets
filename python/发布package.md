@@ -58,6 +58,8 @@ python -m twine upload --repository-url https://repo.xxxx.com/repository/pypi-ho
 
 ```shell
 python -m pip install --extra-index-url https://repo.xxx.com/repository/pypi-group/simple myapi==0.0.1
+# 有时不行，试试下面这个
+pip3 install --trusted-host repo.jx.smobiler.com -i https://repo.jx.smobiler.com/repository/pypi-group/simple/ beflamapi
 ```
 
 ## 如果仅分发 pyc 而不是源码 pv
