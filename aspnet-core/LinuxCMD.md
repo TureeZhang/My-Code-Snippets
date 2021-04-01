@@ -54,3 +54,7 @@ cd
 
 - lsof -i -P -n | grep LISTEN 查看端口占用
 - iftop 查看网络请求 IP 状况
+
+**服务**
+
+- systemctl enable docker 在开机时自动启动 docker 服务
