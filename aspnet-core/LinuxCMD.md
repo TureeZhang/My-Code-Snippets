@@ -58,3 +58,7 @@ cd
 **服务**
 
 - systemctl enable docker 在开机时自动启动 docker 服务
+
+**查看快捷命令的程序所在的 PATH**
+
+- which docker-compose 输出 /usr/local/bin/docker-compose
