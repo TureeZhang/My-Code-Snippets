@@ -1,3 +1,5 @@
+//See also: https://gingter.org/2018/07/26/how-to-mock-httpclient-in-your-net-c-unit-tests/
+
 using XApiBusiness.Helpers;
 using Moq;
 using Moq.Protected;
