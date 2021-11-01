@@ -13,11 +13,7 @@
         int bytesLoaded = await downloading;
         Console.WriteLine($"{nameof(Main)}: Downloaded {bytesLoaded} bytes.");
     }
-```
-
-所以，实际上 await 会在尽可能需要用到 Task 的值时，才做等待。而 .Wait() 则会在调用的时候就立即等待返回值。例如：
-
-```c#
+    
     private static async Task<int> DownloadDocsMainPageAsync()
     {
         Console.WriteLine($"{nameof(DownloadDocsMainPageAsync)}: About to start downloading.");
@@ -28,6 +24,12 @@
         Console.WriteLine($"{nameof(DownloadDocsMainPageAsync)}: Finished downloading.");
         return content.Length;
     }
+```
+
+所以，实际上 await 会在尽可能需要用到 Task 的值时，才做等待。而 .Wait() 则会在调用的时候就立即等待返回值。例如：
+
+```c#
+int a = MethodAsync().Wait();
 ```
 
 参见微软文档： <https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/await>
