@@ -1,4 +1,6 @@
-# Linq 表达式
+# Linq 表达式 ``.NET5以上才支持``
+
+https://stackoverflow.com/questions/42116179/linq-include-and-where-clause
 
 查询子表时包含 where 条件：
 
