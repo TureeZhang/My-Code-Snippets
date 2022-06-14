@@ -62,3 +62,8 @@ cd
 **查看快捷命令的程序所在的 PATH**
 
 - which docker-compose 输出 /usr/local/bin/docker-compose
+
+**磁盘**
+
+- 查看目录下最大的文件，按大小排序 du -h --max-depth=1 和 ls -lhS
+- 删除 MySql 1天前的二进制日志文件 PURGE MASTER LOGS BEFORE DATE_SUB(CURRENT_DATE,INTERVAL 1 DAY); 然后 flush logs;
