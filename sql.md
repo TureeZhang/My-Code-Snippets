@@ -14,6 +14,9 @@ SELECT 1;
 
 SET noexec OFF;
 SELECT 'end';
+
+-- https://qa.1r1g.com/sf/ask/46143191/
+
 ```
 
 
