@@ -63,6 +63,10 @@ users:
 ## minikube 内的 Docker 代理
 
 ```bash
+minikube ssh
+
+sudo su -
+mkdir /etc/systemd/system/docker.service.d/
 vi /etc/systemd/system/docker.service.d/http-proxy.conf
 ```
 
@@ -103,6 +107,16 @@ securityContext:
 这将启用一些有用的插件。
 
 ```bash
+# Dashboard
+minikube addons enable yakd
+
 # Ingress
 minikube addons enable ingress
+
+# 性能分析（含安装helm）
+minikube addons enable metrics-server
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
 ```
