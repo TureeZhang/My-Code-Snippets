@@ -58,3 +58,25 @@ users:
 ```
 
 远程服务器的端口 32789 要看 Docker 里映射 8443 的端口。
+
+## minikube 内的 Docker 代理
+
+```bash
+vi /etc/systemd/system/docker.service.d/http-proxy.conf
+```
+
+```json
+[Service]
+Environment="HTTP_PROXY=http://192.168.22.78:10811"
+Environment="HTTPS_PROXY=http://192.168.22.78:10811"
+Environment="NO_PROXY=192.168.130.80:30080,10.10.10.10,*.example.com"
+```
+
+```bash
+systemctl daemon-reload
+systemctl restart docker
+```
+
+注意，minikube 内的 Docker 环境是与宿主机上的环境隔离的，因此为宿主机设置了代理时仍旧无法让 minikube 内使用代理。反之，内部设置了代理，外部 docker pull 不会受到影响。
+
+同时，重启 minikube 内的 Docker 不会导致外部 Docker 重启。
