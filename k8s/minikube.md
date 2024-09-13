@@ -9,7 +9,7 @@ export http_proxy=http://192.168.22.78:10811
 export https_proxy=http://192.168.22.78:10811
 export NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.59.0/24,192.168.49.0/24,192.168.39.0/24,10.119.220.101
 
-minikube start --force --insecure-registry "192.168.130.80:30080" --image-mirror-country='cn' --listen-address=0.0.0.0
+minikube start --force --insecure-registry "192.168.130.80:30080" --listen-address=0.0.0.0
 ```
 
 - 开头 export 是设置网络代理，一定记得忽略 minikube 相关的代理
@@ -80,3 +80,12 @@ systemctl restart docker
 注意，minikube 内的 Docker 环境是与宿主机上的环境隔离的，因此为宿主机设置了代理时仍旧无法让 minikube 内使用代理。反之，内部设置了代理，外部 docker pull 不会受到影响。
 
 同时，重启 minikube 内的 Docker 不会导致外部 Docker 重启。
+
+## Minikube addons
+
+这将启用一些有用的插件。
+
+```bash
+# Ingress
+minikube addons enable ingress
+```
