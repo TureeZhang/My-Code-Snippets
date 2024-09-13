@@ -182,3 +182,51 @@ server {
     }
 }
 ```
+
+## Ingress
+
+暴露 yakd-dashboard 服务：
+
+```yml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: yakd-ingress
+  namespace: yakd-dashboard
+spec:
+  rules:
+    - host: yakd.example.com # 如果没有域名，直接省略这行 host。记得不要忘记开头的 - 给下一行 http 补上
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: yakd-dashboard
+                port:
+                  number: 80
+```
+
+如果使用路由区分各个网站：
+
+```yml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: yakd-ingress
+  namespace: yakd-dashboard
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2  # 重写路径，去掉 /yakd-dashboard 前缀
+spec:
+  rules:
+    - host: yakd.example.com # 如果没有域名，直接省略这行 host。记得不要忘记开头的 - 给下一行 http 补上
+      http:
+        paths:
+          - path: /auth-central(/|$)(.*)  # 匹配 /yakd-dashboard 后的路径
+            pathType: Prefix
+            backend:
+              service:
+                name: yakd-dashboard
+                port:
+                  number: 80
+```
