@@ -14,8 +14,8 @@ minikube start --force --insecure-registry "192.168.130.80:30080" --listen-addre
 
 - 开头 export 是设置网络代理，一定记得忽略 minikube 相关的代理
 - --insecure-registry 是设置私有 Docker 镜像仓库
-- --image-mirror-country='cn' 会让 minikube 在中国大陆运行时尝试从阿里获取镜像，避免墙的问题
 - --listen-address=0.0.0.0 允许 minikube 被从远程连接
+- 有时，可以指定 --image-mirror-country='cn' 会让 minikube 在中国大陆运行时尝试从阿里获取镜像，避免墙的问题。但现在 Docker 被墙了，源也没了所以这个选项没有意义了。
 
 ## Lens 远程连接
 
@@ -57,7 +57,8 @@ users:
     client-key: ./client.key
 ```
 
-远程服务器的端口 32789 要看 Docker 里映射 8443 的端口。
+- 远程服务器的端口 32789 要看 Docker 里映射 8443 的端口。
+- 需要的几个证书 ca.crt client.crt client.key 可以从 cat ~/.kube/config 里面指定的路径拿。
 
 ## minikube 内的 Docker 代理
 
