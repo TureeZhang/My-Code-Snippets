@@ -120,3 +120,65 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
 ```
+
+## 宿主机 Nginx 暴露 minikube 端口
+
+```bash
+docker run --name minikube-nginx -v /root/nginx/config/nginx.conf:/etc/nginx/nginx.conf -v /root/nginx/templates:/etc/nginx/templates --network host 192.168.130.80:30080/docker-hub-storage/nginx:latest
+```
+
+添加一行，让它包含其他路由规则模板。
+
+```
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    # 注意这行：加载 /etc/nginx/templates/ 目录下所有以 .conf 结尾的文件
+    include /etc/nginx/templates/*.conf;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+}
+```
+
+使用以下映射 yakd-dashboard 的模板：
+
+```
+[root@localhost nginx]# cat templates/minikube.conf 
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://192.168.49.2:80;  # 转发到后端服务
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
