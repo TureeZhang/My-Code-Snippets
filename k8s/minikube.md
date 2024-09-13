@@ -82,6 +82,22 @@ systemctl restart docker
 
 同时，重启 minikube 内的 Docker 不会导致外部 Docker 重启。
 
+## coredns 会部署失败
+
+```yml
+# 编辑 coredns 的 Deployment 文件，在 spec.template.containers.securityContext 下增加 runAsUser: 0
+
+securityContext:
+    runAsUser: 0
+    capabilities:
+      add:
+        - NET_BIND_SERVICE
+      drop:
+        - ALL
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
+```
+
 ## Minikube addons
 
 这将启用一些有用的插件。
