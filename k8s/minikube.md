@@ -171,16 +171,36 @@ http {
 ```
 [root@localhost nginx]# cat templates/minikube.conf 
 server {
-    listen 80;
+    listen 30080;
 
     location / {
-        proxy_pass http://192.168.49.2:80;  # 转发到后端服务
+        proxy_pass http://192.168.49.2:30080;  # 转发到后端服务
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
+```
+
+如果需要自己创建 Service，以 NodePort 形式暴露接口：
+
+```yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wingtech-authcentral-httpapi-host
+  namespace: wingtech-authcentral
+spec:
+  selector:
+    app: wingtech-authcentral  # app 的名称
+  ports:
+    - protocol: TCP
+      port: 80  # 映射的外部端口（这是这个 Service 的端口，一般给 Ingress 用）
+      targetPort: 8080  # 容器内部的端口，就是容器内网站的真端口
+      nodePort: 30107  # Node 节点的端口，在 minikube 中，就是 minikube 所在虚拟机 ip 暴露的端口（minikube ip 可以查看虚拟机 ip）
+  type: NodePort  # 可以根据需要调整为 ClusterIP 或 LoadBalancer
 ```
 
 ## Ingress
