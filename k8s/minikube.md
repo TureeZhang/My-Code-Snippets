@@ -34,7 +34,7 @@ minikube start --force --insecure-registry "192.168.130.80:30080" --listen-addre
 apiVersion: v1
 clusters:
 - cluster:
-    # certificate-authority: ./ca.crt
+    # certificate-authority: ./ca.crt  # ← 这里注释掉使用 CA 证书
     extensions:
     - extension:
         last-update: Wed, 11 Sep 2024 14:47:47 CST
@@ -42,7 +42,7 @@ clusters:
         version: v1.34.0
       name: cluster_info
     server: https://10.119.220.101:32789
-    insecure-skip-tls-verify: true
+    insecure-skip-tls-verify: true  # 这里加上忽略 TLS ，允许不安全链接
   name: minikube
 contexts:
 - context:
