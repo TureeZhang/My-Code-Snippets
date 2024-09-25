@@ -42,7 +42,7 @@ clusters:
         version: v1.34.0
       name: cluster_info
     server: https://10.119.220.101:32789
-    insecure-skip-tls-verify: true  # 这里加上忽略 TLS ，允许不安全链接
+    insecure-skip-tls-verify: true  # ← 这里加上忽略 TLS ，允许不安全链接
   name: minikube
 contexts:
 - context:
