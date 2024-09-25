@@ -2,6 +2,15 @@
 
 此文档描述如何搭建 minikube 单机集群。
 
+## 下载
+
+执行以下命令下载并安装 minikube 到 Linux 。
+
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-arm64
+sudo install minikube-linux-arm64 /usr/local/bin/minikube && rm minikube-linux-arm64
+```
+
 ## 部署命令
 
 ```bash
