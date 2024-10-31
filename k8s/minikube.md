@@ -4,11 +4,19 @@
 
 ## 下载
 
+首先查看自己的主机架构。
+
+```bash
+uname -m
+```
+
+如果输出是 x86_64，那么需要下载适用于 x86_64 架构的 minikube 文件，即 minikube-linux-amd64。
+
 执行以下命令下载并安装 minikube 到 Linux 。
 
 ```bash
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-arm64
-sudo install minikube-linux-arm64 /usr/local/bin/minikube && rm minikube-linux-arm64
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 ```
 
 ## 部署命令
